@@ -57,8 +57,8 @@ namespace FinalProject.Controllers
 		[Route("api/delete")]
 		public IActionResult Delete(int id)
 		{
-			var product = ctx.GetMemberById(id);
-			if (product == null)
+			var member = ctx.GetMemberById(id);
+			if (member == null)
 			{
 				return NotFound(id);
 			}
