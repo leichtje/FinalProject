@@ -7,10 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<MemberContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MemberContext")));
+builder.Services.AddDbContext<GamesContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("GamesContext")));
 
 builder.Services.AddSwaggerDocument();
 
+
 builder.Services.AddScoped<IMemberService, MemberService>();
+
+builder.Services.AddScoped<IGamesService, GamesService>();
 
 var app = builder.Build();
 
@@ -25,6 +29,12 @@ if (!app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
 	var context = scope.ServiceProvider.GetRequiredService<MemberContext>();
+	context.Database.EnsureCreated();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+	var context = scope.ServiceProvider.GetRequiredService<GamesContext>();
 	context.Database.EnsureCreated();
 }
 
