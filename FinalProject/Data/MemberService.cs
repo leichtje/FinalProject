@@ -22,7 +22,7 @@ namespace FinalProject.Data
 		}
 
 		public List<Member> GetAllMembers()
-		{//error
+		{
 			return ctx.Members.ToList();
 		}
 
