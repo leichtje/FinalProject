@@ -6,8 +6,7 @@ namespace FinalProject.Data
 	public class MemberContext:DbContext
 	{
 		public MemberContext(DbContextOptions<MemberContext> options) :
-			base(options)
-		{ }
+			base(options) { }
 		public DbSet<Member> Members { get; set; }
 		
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

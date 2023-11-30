@@ -1,7 +1,10 @@
-﻿namespace FinalProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FinalProject.Models
 {
 	public class Sports
 	{
+		[Key]
 		public int MemberID { get; set; }
 		public string Name { get; set; }
 		public string FavoriteSport { get; set; }

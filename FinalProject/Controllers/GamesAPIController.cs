@@ -1,39 +1,39 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using FinalProject.Data;
+﻿using FinalProject.Data;
 using FinalProject.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProject.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
-	public class MemberAPIController : Controller
+	public class GamesAPIController : Controller
 	{
-		IMemberService ctx;
-		public MemberAPIController(IMemberService context)
+		IGamesService ctx;
+		public GamesAPIController(IGamesService context)
 		{
 			ctx = context;
 		}
 
 		[HttpGet]
-		[Route("api/getmembers")]
+		[Route("api/getgames")]
 		public IActionResult Get()
 		{
-			return Ok(ctx.GetAllMembers());
+			return Ok(ctx.GetAllGames());
 		}
 
 		[HttpGet("id")]
 		public IActionResult Get(int id)
 		{
-			return Ok(ctx.GetMemberById(id));
+			return Ok(ctx.GetGameById(id));
 		}
 
 		[HttpPost]
-		public IActionResult Post(Member p)
+		public IActionResult Post(Games p)
 		{
-			var result = ctx.AddMember(p);
+			var result = ctx.AddGame(p);
 			if (result == null)
 			{
-				return StatusCode(500, "A Member with this ID already exists");
+				return StatusCode(500, "A Person with this ID already exists");
 			}
 			if (result == 0)
 			{
@@ -43,9 +43,9 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPut]
-		public IActionResult Put(Member p)
+		public IActionResult Put(Games p)
 		{
-			var result = ctx.UpdateMember(p);
+			var result = ctx.UpdateGame(p);
 			if (result == 0)
 			{
 				return StatusCode(500, "An error occured while processing your request");
@@ -53,16 +53,16 @@ namespace FinalProject.Controllers
 			return Ok();
 		}
 
-		[HttpDelete("id")]
+		[HttpDelete]
 		[Route("api/delete")]
 		public IActionResult Delete(int id)
 		{
-			var member = ctx.GetMemberById(id);
-			if (member == null)
+			var game = ctx.GetGameById(id);
+			if (game == null)
 			{
 				return NotFound(id);
 			}
-			var result = ctx.RemoveMemberById(id);
+			var result = ctx.RemoveGameById(id);
 			if (result == 0)
 			{
 				return StatusCode(500, "An error occured while processing your request");
