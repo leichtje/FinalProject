@@ -13,8 +13,7 @@ namespace FinalProject.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder1)
 		{
-			//modelBuilder.Entity<Games>().HasNoKey(new Games { GameID = 1, Name = "America", FavoriteGame = "Call of Duty", TypeOfGame = "Shooter", Developer = "Activision" }
-				//);
+			
 			modelBuilder1.Entity<Games>().HasData(
 				new Games { GameID = 1, Name = "America", FavoriteGame = "Call of Duty", TypeOfGame = "Shooter", Developer = "Activision" }
 				);

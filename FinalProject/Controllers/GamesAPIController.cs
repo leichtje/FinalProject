@@ -53,7 +53,7 @@ namespace FinalProject.Controllers
 			return Ok();
 		}
 
-		[HttpDelete("id")]
+		[HttpDelete]
 		[Route("api/delete")]
 		public IActionResult Delete(int id)
 		{
