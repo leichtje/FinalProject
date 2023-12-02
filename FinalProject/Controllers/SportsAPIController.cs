@@ -33,7 +33,7 @@ namespace FinalProject.Controllers
             var result = ctx.AddSport(p);
             if (result == null)
             {
-                return StatusCode(500, "A Person with this ID already exists");
+                return StatusCode(500, "A Sport with this ID already exists");
             }
             if (result == 0)
             {

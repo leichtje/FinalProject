@@ -33,7 +33,7 @@ namespace FinalProject.Controllers
             var result = ctx.AddMovie(p);
             if (result == null)
             {
-                return StatusCode(500, "A Person with this ID already exists");
+                return StatusCode(500, "A Movie with this ID already exists");
             }
             if (result == 0)
             {
