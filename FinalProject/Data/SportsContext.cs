@@ -16,8 +16,9 @@ namespace FinalProject.Data
         {
 
             modelBuilder1.Entity<Sports>().HasData(
-                new Sports { SportID = 1, Name = "First Sport", FavoriteSport = "Football", FavoriteTeam = "Bearcats", FavoritePlayer = "Emory Jones" }
-                );
+                new Sports { SportID = 1, Name = "First Sport", FavoriteSport = "Football", FavoriteTeam = "Bearcats", FavoritePlayer = "Emory Jones" },
+                new Sports { SportID = 2, Name = "Second Sport", FavoriteSport = "Soccer", FavoriteTeam = "US", FavoritePlayer = "Christian Pulisic" });
+                
         }
     }
 }
