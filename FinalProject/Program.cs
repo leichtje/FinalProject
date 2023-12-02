@@ -8,8 +8,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<MemberContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MemberContext")));
 builder.Services.AddDbContext<GamesContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("GamesContext")));
-/*builder.Services.AddDbContext<MoviesContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MoviesContext")));
-builder.Services.AddDbContext<SportsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SportsContext")));*/
+builder.Services.AddDbContext<MoviesContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MoviesContext")));
+builder.Services.AddDbContext<SportsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SportsContext")));
 
 builder.Services.AddSwaggerDocument();
 
@@ -18,9 +18,9 @@ builder.Services.AddScoped<IMemberService, MemberService>();
 
 builder.Services.AddScoped<IGamesService, GamesService>();
 
-/*builder.Services.AddScoped<IMoviesService, MoviesService>();
+builder.Services.AddScoped<IMoviesService, MoviesService>();
 
-builder.Services.AddScoped<ISportsService, SportsService>();*/
+builder.Services.AddScoped<ISportsService, SportsService>();
 
 
 var app = builder.Build();
@@ -45,7 +45,7 @@ using (var scope = app.Services.CreateScope())
 	context.Database.EnsureCreated();
 }
 
-/*using (var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope())
 {
 	var context = scope.ServiceProvider.GetRequiredService<MoviesContext>();
 	context.Database.EnsureCreated();
@@ -55,7 +55,7 @@ using (var scope = app.Services.CreateScope())
 {
 	var context = scope.ServiceProvider.GetRequiredService<SportsContext>();
 	context.Database.EnsureCreated();
-}*/
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
